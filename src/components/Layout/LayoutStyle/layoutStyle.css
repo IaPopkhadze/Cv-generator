@@ -1,0 +1,14 @@
+.layout {
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+}
+.layout .resume_fields {
+  height: 100%;
+  width: 1098px;
+  background-color: whitesmoke;
+}
+.layout .runtime_resume {
+  height: 100%;
+  width: 822px;
+}/*# sourceMappingURL=layoutStyle.css.map */
