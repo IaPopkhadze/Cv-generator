@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PersonalInformation from "./PersonalInformation/PersonalInformation";
 import Experience from "./Experience/Experience.js";
 import Education from "./Education/Education.js";
@@ -6,7 +6,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 const ResumeFields = () => {
   const navigate = useNavigate();
-  const pages = [<PersonalInformation />, <Experience />, <Education />];
+
+
+  const pages = [
+    <PersonalInformation
+
+    />,
+    <Experience />,
+    <Education />,
+  ];
   return (
     <div>
       <div style={myStyle.backToStartPage} onClick={() => navigate("/")}>

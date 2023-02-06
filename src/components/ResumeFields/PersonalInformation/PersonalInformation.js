@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
+import { validationSchema } from "../ValidationSchema";
 import "./PersonalInformationStyle/personalInformationStyle.css";
+import { BsCheck } from "react-icons/bs";
+import Vector from "../../Assets/Vector.svg";
 const PersonalInformation = () => {
+  const onSubmit = () => {
+    console.log("submited");
+  };
+
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -11,8 +18,51 @@ const PersonalInformation = () => {
       email: "",
       mobile: "",
     },
+    validationSchema: validationSchema,
+    onSubmit,
   });
-  console.log(formik)
+
+  const letters = [
+    "ა",
+    "ბ",
+    "გ",
+    "დ",
+    "ე",
+    "ვ",
+    "ზ",
+    "თ",
+    "ი",
+    "კ",
+    "ლ",
+    "მ",
+    "ნ",
+    "ო",
+    "პ",
+    "ჟ",
+    "რ",
+    "ს",
+    "ტ",
+    "უ",
+    "ფ",
+    "ქ",
+    "ღ",
+    "ყ",
+    "შ",
+    "ჩ",
+    "ც",
+    "ძ",
+    "წ",
+    "ჭ",
+    "ხ",
+    "ჯ",
+    "ჰ",
+  ];
+  const allowedLetters = (e) => {
+    if (letters.includes(e.key) || e.key == "Backspace" || e.key == " ") {
+    } else {
+      e.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -22,71 +72,54 @@ const PersonalInformation = () => {
           1/3
         </div>
       </div>
-      <form action="">
-        <div className="firstname_lastname_container ">
-          <div>
-            <label htmlFor="firstname">სახელი</label>
-            <input
-              value={formik.values.firstname}
-              onChange={formik.handleChange}
-              name="firstname"
-              type="text"
-              placeholder="სახელი..."
-            />
-            <p>მინიმუმ ორი ასო, ქართული ასოები</p>
+      <form onSubmit={formik.handleSubmit} autoComplete="off">
+        <div className="name_surname_container">
+          <div className="child_container">
+            <label htmlFor="">სახელი</label>
+            <div className="input_icon">
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.firstname}
+                name="firstname"
+                onKeyDown={allowedLetters}
+                style={
+                  formik.values.firstname.length && formik.errors.firstname
+                    ? { border: "1px solid #EF5050" }
+                    : formik.values.firstname.length && !formik.errors.firstname
+                    ? { border: "1px solid #98E37E" }
+                    : { border: "1px solid #bcbcbc" }
+                }
+                type="text"
+              />
+
+              {formik.values.firstname.length && formik.errors.firstname ? (
+                <div className="icon_container">
+                  <img src={Vector} alt="" />
+                </div>
+              ) : formik.values.firstname.length && !formik.errors.firstname ? (
+                <div className="icon_container">
+                  <BsCheck />
+                </div>
+              ) : null}
+    
+
+    
+            </div>
+            <p>მინიმუმ 2 ასო, ქართული ასოები</p>
           </div>
-          <div>
-            <label htmlFor="lastname">გვარი</label>
-            <input
-              value={formik.values.lastname}
-              onChange={formik.handleChange}
-              name="lastname"
-              type="text"
-              placeholder="გვარი..."
-            />
-            <p>მინიმუმ ორი ასო, ქართული ასოები</p>
+          <div className="child_container">
+            <label htmlFor="">სახელი</label>
+            <div className="input_icon">
+              <input type="text" />
+              <div className="icon_container">
+                <BsCheck />
+              </div>
+              <div className="icon_container">
+                <img src={Vector} alt="" />
+              </div>
+            </div>
+            <p>მინიმუმ 2 ასო, ქართული ასოები</p>
           </div>
-        </div>
-        <div className="upload_image_container">
-          <p>პირადი ფოტოს ატვირთვა</p>
-          <button>ატვირთვა</button>
-        </div>
-        <div className="about_me_container">
-          <label>ჩემ შესახებ (არასავალდებულო)</label>
-          <textarea
-            value={formik.values.about}
-            onChange={formik.handleChange}
-            name="about"
-            placeholder="ზოგადი ინფო შენს შესახებ"
-            id=""
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
-        <div className="input_container">
-          <label htmlFor="email">ელ.ფოსტა</label>
-          <input
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            name="email"
-            type="email"
-            placeholder="someone@redberry.ge"
-          />
-          <p>უნდა მთავრდებოდეს @redberry.ge-ით</p>
-        </div>
-        <div className="input_container">
-          <label htmlFor="email">მობილურის ნომერი</label>
-          <input
-            value={formik.values.mobile}
-            onChange={formik.handleChange}
-            name="mobile"
-            type="text"
-            placeholder="+995 _ _  _ _  _ _"
-          />
-          <p>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</p>
-        </div>
-        <div className="btn_container">
-          <button className="next_page_btn">შემდეგი</button>
         </div>
       </form>
     </>
