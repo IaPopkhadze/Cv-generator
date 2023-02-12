@@ -10,6 +10,9 @@
   font-size: 24px;
   font-weight: 700;
 }
+.experience form .textarea_container .jobdescription {
+  height: 123px;
+}
 
 .more_experience {
   margin-top: 45px;
@@ -37,4 +40,8 @@
   border-radius: 4px;
   color: white;
   cursor: pointer;
+}
+
+.jobdescription {
+  height: 193px;
 }/*# sourceMappingURL=experienceStyle.css.map */

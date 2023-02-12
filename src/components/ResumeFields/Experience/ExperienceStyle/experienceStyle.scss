@@ -11,6 +11,13 @@
       font-weight: 700;
     }
   }
+  form {
+    .textarea_container {
+      .jobdescription {
+        height: 123px;
+      }
+    }
+  }
 }
 .more_experience {
   margin-top: 45px;
@@ -37,4 +44,7 @@
     color: white;
     cursor: pointer;
   }
+}
+.jobdescription {
+  height: 193px;
 }

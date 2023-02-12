@@ -2,22 +2,31 @@ import React, { useEffect, useState } from "react";
 import "./PersonalInformationStyle/personalInformationStyle.css";
 import { BsCheck } from "react-icons/bs";
 import Vector from "../../Assets/Vector.svg";
+import { useContext } from "react";
+import { valueContext } from "../../../App";
 
 const PersonalInformation = ({ handleNextPage }) => {
-  let [firstname, setFirstname] = useState("");
-  const [firstnameError, setFirstnameError] = useState(null);
+  const {
+    firstname,
+    setFirstname,
+    firstnameError,
+    setFirstnameError,
+    lastname,
+    setLastname,
+    lastnameError,
+    setLastnameError,
+    about,
+    setAbout,
+    email,
+    setEmail,
+    emailError,
+    setEmailError,
+    mobile,
+    setMobile,
+    mobileError,
+    setMobileError,
+  } = useContext(valueContext);
 
-  let [lastname, setLastname] = useState("");
-  const [lastnameError, setLastnameError] = useState(null);
-
-  let [about, setAbout] = useState("");
-  const [aboutError, setAboutError] = useState(null);
-
-  let [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(null);
-
-  let [mobile, setMobile] = useState("");
-  const [mobileError, setMobileError] = useState(null);
 
   const usernameValidation = (e) => {
     const firstname = e.target.value;
@@ -39,8 +48,6 @@ const PersonalInformation = ({ handleNextPage }) => {
     const about = e.target.value;
     setAbout(about);
 
-    const regex = /^[ა-ჰ\s,.?!:-;/\d]+$/;
-    setAboutError(!about.match(regex));
   };
 
   const emailValidation = (e) => {
@@ -51,8 +58,19 @@ const PersonalInformation = ({ handleNextPage }) => {
   };
 
   const mobileNumberValidation = (e) => {
-    const mobile = e.target.value;
-    setMobile(mobile);
+    let mobile = e.target.value;
+    mobile = mobile.replace(/[^\d+]/g, "");
+    let phoneNumberLength = mobile.length;
+    if (phoneNumberLength < 5) {
+      setMobile(mobile);
+    }
+    if (phoneNumberLength < 14) {
+      let formatedPhoneNumber = `${mobile.slice(0, 4)} ${mobile.slice(
+        4,
+        7
+      )} ${mobile.slice(7, 9)} ${mobile.slice(9, 11)} ${mobile.slice(11, 13)}`;
+      setMobile(formatedPhoneNumber);
+    }
   };
 
   return (
@@ -144,9 +162,7 @@ const PersonalInformation = ({ handleNextPage }) => {
             onChange={aboutValidation}
             value={about}
             style={
-              about.length && aboutError
-                ? { border: "1px solid #EF5050" }
-                : about.length && !aboutError
+              about.length
                 ? { border: "1px solid #98E37E" }
                 : { border: "1px solid #bcbcbc" }
             }
@@ -197,7 +213,7 @@ const PersonalInformation = ({ handleNextPage }) => {
               value={mobile}
               name="mobile"
               type="text"
-              placeholder="+995 ..."
+              placeholder="+995 551 12 34 56"
               style={
                 mobile.length && mobileError
                   ? { border: "1px solid #EF5050" }
