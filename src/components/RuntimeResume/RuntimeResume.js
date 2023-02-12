@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './RuntimeStyle/runtimeStyle.css'
 const RuntimeResume = () => {
   return (
-    <div>RuntimeResume</div>
+    <div className='runtime_resume'>RuntimeResume</div>
   )
 }
 

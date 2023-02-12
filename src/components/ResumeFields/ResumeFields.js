@@ -2,25 +2,43 @@ import React, { useState } from "react";
 import PersonalInformation from "./PersonalInformation/PersonalInformation";
 import Experience from "./Experience/Experience.js";
 import Education from "./Education/Education.js";
+import ResumeResult from "../ResumeResult/ResumeResult";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 const ResumeFields = () => {
   const navigate = useNavigate();
 
+  const [currentPage, setCurrentPage] = useState(0);
 
+  const handleNextPage = () => {
+    if (currentPage <2) {
+      setCurrentPage(currentPage + 1); console.log(currentPage)
+    }
+   
+  };
+  const handlePreviousPage = () => {
+
+      setCurrentPage(currentPage - 1);
+    
+  };
   const pages = [
-    <PersonalInformation
-
+    <PersonalInformation handleNextPage={handleNextPage} />,
+    <Experience
+      handleNextPage={handleNextPage}
+      handlePreviousPage={handlePreviousPage}
     />,
-    <Experience />,
-    <Education />,
+    <Education
+      handleNextPage={handleNextPage}
+      handlePreviousPage={handlePreviousPage}
+    />,
+
   ];
   return (
     <div>
       <div style={myStyle.backToStartPage} onClick={() => navigate("/")}>
         <IoIosArrowBack />
       </div>
-      <div style={myStyle.currentField}>{pages[0]}</div>
+      <div style={myStyle.currentField}>{pages[currentPage]}</div>
     </div>
   );
 };
