@@ -9,18 +9,10 @@ const Experience = ({ handleNextPage, handlePreviousPage }) => {
   };
   return (
     <>
-      <div className="header_information">
-        <p className="title">გამოცდილება</p>
-        <div className="current_page_index" style={{ fontSize: "20px" }}>
-          2/3
-        </div>
-      </div>
-      {experiences.map(newform => {
+      {/* {experiences.map(newform => {
         return newform;
-      })}
-      <button className="more_experience" onClick={handleAddExperience}>
-        მეტი გამოცდილების დამატება
-      </button>
+      })} */}
+      <NewExperience />
       <div className="btns_container">
         <button onClick={handlePreviousPage}>უკან</button>
         <button onClick={handleNextPage}>შემდეგი</button>

@@ -1,55 +1,73 @@
 import StartPage from "./components/StartPage/StartPage";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import { createContext, useState } from "react";
-
+import ResumeResult from "./components/ResumeResult/ResumeResult";
 export const valueContext = createContext(null);
 
 function App() {
+  const [result, setResult] = useState(false);
+  const navigate = useNavigate();
+  const [personalInformations, setPersonalInformations] = useState({
+    firstname: "",
+    lastname: "",
+    image: "",
+    about: "",
+    email: "",
+    mobile: "",
 
-//personalInformation
-let [firstname, setFirstname] = useState("");
-const [firstnameError, setFirstnameError] = useState(null);
+    firstnameError: null,
+    lastnameError: null,
+    emailError: null,
+    mobileError: null,
+    imageError: null,
+  });
+  const [newExperience, setNewExperience] = useState([
+    {
+      jobPosition: "",
+      employer: "",
+      jobPositionStartDate: "",
+      jobPositionEndDate: "",
+      jobDescription: "",
 
-let [lastname, setLastname] = useState("");
-const [lastnameError, setLastnameError] = useState(null);
+      jobPositionStyle: "",
+      employerError: null,
+      jobPositionStartDateError: null,
+      jobPositionEndDateError: null,
+      jobDescriptionError: null,
+    },
+  ]);
+  const [newEducation, setNewEducation] = useState([
+    {
+      university: "",
+      degree: "",
+      educationEndDate: "",
+      educationDescription: "",
 
-let [about, setAbout] = useState("");
-
-let [email, setEmail] = useState("");
-const [emailError, setEmailError] = useState(null);
-
-let [mobile, setMobile] = useState("");
-const [mobileError, setMobileError] = useState(null);
-
-
+      universityStyle: "",
+      degreeError: null,
+      educationEndDateError: null,
+      newEducationDescriptionStyle: "",
+    },
+  ]);
 
   return (
     <valueContext.Provider
       value={{
-        firstname,
-        setFirstname,
-        firstnameError,
-        setFirstnameError,
-        lastname,
-        setLastname,
-        lastnameError,
-        setLastnameError,
-        about,
-        setAbout,
-        email,
-        setEmail,
-        emailError,
-        setEmailError,
-        mobile,
-        setMobile,
-        mobileError,
-        setMobileError,
+        newEducation,
+        setNewEducation,
+        newExperience,
+        setNewExperience,
+        personalInformations,
+        setPersonalInformations,
+        result,
+        setResult,
       }}
     >
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="layout" element={<Layout />} />
+        <Route path="resumeResult" element={<ResumeResult />} />
       </Routes>
     </valueContext.Provider>
   );

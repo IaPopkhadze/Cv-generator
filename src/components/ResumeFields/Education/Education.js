@@ -1,29 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { valueContext } from "../../../App";
 import NewEducation from "./NewEducation";
 const Education = ({ handleNextPage, handlePreviousPage }) => {
-  const [educations, setEducations] = useState([<NewEducation />]);
-
+  // const [educations, setEducations] = useState([<NewEducation />]);
+  const navigate = useNavigate();
   const handleAddExperience = () => {
-    setEducations([...educations, <NewEducation />]);
+    // setEducations([...educations, <NeswEducation />]);
   };
+
+  const { newEducation, setNewEducation } = useContext(valueContext);
+
   return (
     <>
-      <div className="header_information">
-        <p className="title">განათლება</p>
-        <div className="current_page_index" style={{ fontSize: "20px" }}>
-          3/3
-        </div>
-      </div>
+      <NewEducation />
 
-      {educations.map(newform => {
+      {/* {educations.map(newform => {
         return newform;
-      })}
-      <button className="more_experience" onClick={handleAddExperience}>
-       სხვა სასწავლებლის დამატება
-      </button>
+      })} */}
+
       <div className="btns_container">
         <button onClick={handlePreviousPage}>უკან</button>
-        <button onClick={handleNextPage}>დასრულება</button>
+        {newEducation
+          .map((x) => {
+            if (
+              x.university &&
+              x.degree &&
+              x.educationEndDate &&
+              x.educationDescription
+            ) {
+    
+              return true;
+            } else return false;
+          })
+          .every((x) => x === true) && (
+          <button onClick={() => navigate("/resumeResult")}>დასრულება</button>
+        )}
       </div>
     </>
   );

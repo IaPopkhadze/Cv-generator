@@ -1,0 +1,82 @@
+.result_container {
+  width: 210mm;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  padding: 50px 65px;
+}
+.result_container .personal-information-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.result_container .personal-information-container .left-side {
+  width: 65%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+.result_container .personal-information-container .left-side .first-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  line-height: 2rem;
+}
+.result_container .personal-information-container .left-side .first-section h1 {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+.result_container .personal-information-container .left-side .second-section {
+  margin-top: 20px;
+}
+.result_container .personal-information-container .left-side .second-section h1 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.result_container .personal-information-container .right-side {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
+}
+.result_container .personal-information-container .right-side img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.result-title {
+  color: #f93b1d;
+  font-weight: 700;
+  font-family: myfont;
+}
+
+.start_again_btn {
+  background-color: transparent;
+  color: #F93B1D;
+  text-shadow: 1px 1px 1px black;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  outline: none;
+  font-size: 1.3rem;
+  font-family: myfont;
+  padding: 1rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: 0.5s;
+}
+
+.start_again_btn:hover {
+  background-color: #F93B1D;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px black;
+}/*# sourceMappingURL=resumeResultStyle.css.map */

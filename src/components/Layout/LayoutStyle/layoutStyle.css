@@ -1,14 +1,23 @@
 .layout {
-  width: 1920px;
-  height: 1080px;
   display: flex;
+  width: 100%;
 }
 .layout .resume_fields {
-  height: 100%;
-  width: 1098px;
-  background-color: whitesmoke;
+  flex: 13;
 }
 .layout .runtime_resume {
-  height: 100%;
-  width: 822px;
+  flex: 11;
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .layout .resume_fields {
+    flex: 1;
+  }
+  .layout .runtime_resume {
+    flex: 1;
+  }
 }/*# sourceMappingURL=layoutStyle.css.map */

@@ -4,22 +4,64 @@ import Experience from "./Experience/Experience.js";
 import Education from "./Education/Education.js";
 import ResumeResult from "../ResumeResult/ResumeResult";
 import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
-const ResumeFields = () => {
-  const navigate = useNavigate();
 
+import "./ResumeFieldStyle/resumeFieldStyle.css";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { valueContext } from "../../App";
+
+const ResumeFields = () => {
+  const { newExperience, personalInformations } = useContext(valueContext);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const handleNextPage = () => {
-    if (currentPage <2) {
-      setCurrentPage(currentPage + 1); console.log(currentPage)
-    }
-   
-  };
-  const handlePreviousPage = () => {
+  const navigate = useNavigate();
 
-      setCurrentPage(currentPage - 1);
-    
+  const handleNextPage = (e) => {
+    const {
+      firstnameError,
+      lastnameError,
+      emailError,
+      mobileError,
+      imageError,
+    } = personalInformations;
+
+    const validateField2 = newExperience
+      .map((x) => {
+        if (
+          x.jobPosition &&
+          x.employer &&
+          x.jobPositionStartDate &&
+          x.jobPositionEndDate &&
+          x.jobDescription
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      .every((x) => x === true);
+    if (
+      !firstnameError &&
+      !lastnameError &&
+      !emailError &&
+      !mobileError &&
+      !imageError
+    ) {
+      if (currentPage == 0) {
+        setCurrentPage(currentPage + 1);
+      }
+    }
+    if (validateField2) {
+      if (currentPage == 1) {
+        setCurrentPage(currentPage + 1);
+      }
+    }
+  };
+
+//
+
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
   };
   const pages = [
     <PersonalInformation handleNextPage={handleNextPage} />,
@@ -31,39 +73,21 @@ const ResumeFields = () => {
       handleNextPage={handleNextPage}
       handlePreviousPage={handlePreviousPage}
     />,
-
   ];
   return (
-    <div>
-      <div style={myStyle.backToStartPage} onClick={() => navigate("/")}>
-        <IoIosArrowBack />
+    <div className="resume_fields">
+      <div className="resume_field_header">
+        <div className="header_icon" onClick={() => navigate("/")}>
+          <IoIosArrowBack />
+        </div>
+        <div className="header_line">
+          <div className="page_title">პირადი ინფო</div>
+          <div className="page_position">1/1</div>
+        </div>
       </div>
-      <div style={myStyle.currentField}>{pages[currentPage]}</div>
+      <div className="current_page">{pages[currentPage]}</div>
     </div>
   );
-};
-
-const myStyle = {
-  backToStartPage: {
-    position: "absolute",
-    top: "45px",
-    left: "48px",
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    backgroundColor: "white",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "1.3rem",
-    cursor: "pointer",
-  },
-  currentField: {
-    position: "absolute",
-    top: "47px",
-    left: "149px",
-    width: "798px",
-  },
 };
 
 export default ResumeFields;

@@ -1,51 +1,70 @@
 .startPageStyle {
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100vh;
   position: relative;
-  .redberry {
+  overflow: hidden;
+  .startpage_img {
     position: absolute;
-    left: 70px;
-    top: 25px;
-    width: 236px;
-    height: 38px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
-  .line {
+  .startPageContent {
     position: absolute;
-    width: 1780px;
-    top: 89px;
-    left: 70px;
-    border: 1px solid #1a1a1a;
-  }
-  .circle_logo {
-    position: absolute;
-    width: 299px;
-    height: 299px;
-    top: 473px;
-    left: 1076px;
-  }
-  .add_resume_btn {
-    position: absolute;
-    width: 464px;
-    height: 60px;
-    top: 513px;
-    left: 728px;
-    border-radius: 8px;
-    background-color: #1a1a1a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: #ffffff;
-    font-family: myfont;
-    line-height: 24.42px;
-    cursor: pointer;
-    transition: 0.4s;
-  }
-  .add_resume_btn:hover {
-    box-shadow: rgb(68, 38, 67) 0px 0px 0px 2px inset,
-      rgb(182, 133, 184) 10px -10px 0px -3px, rgb(62, 43, 66) 10px -10px;
-      background-color: transparent;
-      color: rgb(62, 43, 66);
-      font-weight: bold; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .resume {
+      font-size: 3rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 5%;
+    }
+    .line {
+      width: 90%;
+      border: 1px solid black;
+      margin: auto;
+    }
+    .circle_logo {
+      position: relative;
+      width: 300px;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+    }
+    .add_resume_btn_container {
+      margin-top: 5rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .add_resume_btn {
+        position: absolute;
+        padding: 1rem 5rem;
+        height: 60px;
+
+        border-radius: 8px;
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: #ffffff;
+        font-family: myfont;
+        line-height: 24.42px;
+        cursor: pointer;
+        transition: 0.4s;
+      }
+      .add_resume_btn:hover {
+        box-shadow: rgb(68, 38, 67) 0px 0px 0px 2px inset,
+          rgb(182, 133, 184) 10px -10px 0px -3px, rgb(62, 43, 66) 10px -10px;
+        background-color: transparent;
+        color: rgb(62, 43, 66);
+        font-weight: bold;
+      }
+    }
   }
 }

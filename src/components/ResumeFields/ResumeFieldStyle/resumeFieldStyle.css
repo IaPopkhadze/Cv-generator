@@ -1,0 +1,43 @@
+.resume_fields {
+  width: 90%;
+  margin: 2rem auto;
+}
+.resume_fields .resume_field_header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.resume_fields .resume_field_header .header_line {
+  border: 1px solid black;
+  width: 100%;
+  position: relative;
+}
+.resume_fields .resume_field_header .header_line .page_position {
+  position: absolute;
+  right: 0.5rem;
+  top: -2.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: myfont;
+}
+.resume_fields .resume_field_header .header_line .page_title {
+  position: absolute;
+  left: 0.5rem;
+  top: -2.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: myfont;
+}
+.resume_fields .resume_field_header .header_icon {
+  width: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 35px;
+}
+.resume_fields .current_page {
+  margin-left: 50px;
+}/*# sourceMappingURL=resumeFieldStyle.css.map */
