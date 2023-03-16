@@ -9,9 +9,7 @@ const Experience = ({ handleNextPage, handlePreviousPage }) => {
   };
   return (
     <>
-      {/* {experiences.map(newform => {
-        return newform;
-      })} */}
+ 
       <NewExperience />
       <div className="btns_container">
         <button onClick={handlePreviousPage}>უკან</button>

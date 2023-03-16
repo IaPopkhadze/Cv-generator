@@ -6,6 +6,7 @@ import ResumeResult from "./components/ResumeResult/ResumeResult";
 export const valueContext = createContext(null);
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(0);
   const [result, setResult] = useState(false);
   const navigate = useNavigate();
   const [personalInformations, setPersonalInformations] = useState({
@@ -61,7 +62,7 @@ function App() {
         personalInformations,
         setPersonalInformations,
         result,
-        setResult,
+        setResult,currentPage, setCurrentPage
       }}
     >
       <Routes>

@@ -5,7 +5,6 @@ import { valueContext } from "../../App";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 const ResumeResult = () => {
-  const navigate = useNavigate();
   const {
     newEducation,
     setNewEducation,
@@ -13,8 +12,11 @@ const ResumeResult = () => {
     setNewExperience,
     personalInformations,
     setPersonalInformations,
+    result,
+    setResult,currentPage, setCurrentPage
   } = useContext(valueContext);
   const [data, setData] = useState(null);
+
   useEffect(() => {
     const _personalInformations = JSON.parse(
       localStorage.getItem("personalInformations")
@@ -75,9 +77,56 @@ const ResumeResult = () => {
     }
   }, []);
 
-  const resetData = () => {
-    navigate("/");
+  const navigate = useNavigate();
 
+  const resetFields = () => {
+    setPersonalInformations({
+      firstname: "",
+      lastname: "",
+      image: "",
+      about: "",
+      email: "",
+      mobile: "",
+      firstnameError: null,
+      lastnameError: null,
+      emailError: null,
+      mobileError: null,
+      imageError: null,
+    });
+    setNewExperience([
+      {
+        jobPosition: "",
+        employer: "",
+        jobPositionStartDate: "",
+        jobPositionEndDate: "",
+        jobDescription: "",
+        jobPositionStyle: "",
+        employerError: null,
+        jobPositionStartDateError: null,
+        jobPositionEndDateError: null,
+        jobDescriptionError: null,
+      },
+    ]);
+    setNewEducation([
+      {
+        university: "",
+        degree: "",
+        educationEndDate: "",
+        educationDescription: "",
+        universityStyle: "",
+        degreeError: null,
+        educationEndDateError: null,
+        newEducationDescriptionStyle: "",
+      },
+    ]);
+  };
+
+  const handleGoBack = () => {
+    resetFields();
+    navigate("/");
+    localStorage.removeItem("personalInformations");
+    localStorage.removeItem("newExperience");
+    localStorage.removeItem("newEducation");
   };
 
   if (data) {
@@ -197,7 +246,7 @@ const ResumeResult = () => {
             );
           })}
         </div>
-        <button className="start_again_btn" onClick={resetData}>
+        <button className="start_again_btn" onClick={handleGoBack}>
           თავიდან დაწყება
         </button>
       </div>

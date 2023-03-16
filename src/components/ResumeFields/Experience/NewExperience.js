@@ -6,7 +6,6 @@ import Vector from "../../Assets/Vector.svg";
 import { useContext } from "react";
 import { valueContext } from "../../../App";
 
-
 const NewExperience = () => {
   const { newExperience, setNewExperience } = useContext(valueContext);
   useEffect(() => {
@@ -186,26 +185,7 @@ const NewExperience = () => {
                       type="date"
                       onChange={(e) => handleChangeJobPositionEndDate(e, i)}
                       value={exp.jobPositionEndDate}
-                      // style={
-                      //   lastname.length && lastnameError
-                      //     ? { border: "1px solid #EF5050" }
-                      //     : lastname.length && !lastnameError
-                      //     ? { border: "1px solid #98E37E" }
-                      //     : { border: "1px solid #bcbcbc" }
-                      // }
                     />
-                    {/* {lastname.length && lastnameError ? (
-                      <div className="icon_container">
-                        <img src={Vector} alt="" />
-                      </div>
-                    ) : lastname.length && !lastnameError ? (
-                      <div
-                        className="icon_container"
-                        style={{ backgroundColor: "#98e37e" }}
-                      >
-                        <BsCheck />
-                      </div>
-                    ) : null} */}
                   </div>
                 </div>
               </div>
@@ -218,11 +198,6 @@ const NewExperience = () => {
                     exp.jobDescription.length
                       ? { border: "1px solid #98E37E" }
                       : null
-                    // about.length && aboutError
-                    //   ? { border: "1px solid #EF5050" }
-                    //   : about.length && !aboutError
-                    //   ? { border: "1px solid #98E37E" }
-                    //   : { border: "1px solid #bcbcbc" }
                   }
                   name="about"
                   placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"

@@ -155,18 +155,7 @@ const NewEducation = () => {
                       <option value="ასპირანტურა">ასპირანტურა</option>
                     </select>
 
-                    {/* {firstname.length && firstnameError ? (
-                    <div className="icon_container">
-                      <img src={Vector} alt="" />
-                    </div>
-                  ) : firstname.length && !firstnameError ? (
-                    <div
-                      className="icon_container"
-                      style={{ backgroundColor: "#98e37e" }}
-                    >
-                      <BsCheck />
-                    </div>
-                  ) : null} */}
+  
                   </div>
                 </div>
                 <div className="child_container">
@@ -177,29 +166,9 @@ const NewEducation = () => {
                       type="date"
                       onChange={(e) => handleChangeEducationEndDate(e, i)}
                       value={exp.educationEndDate}
-                      // value={lastname}
-                      // onChange={lastnameValidation}
-
-                      // style={
-                      //   lastname.length && lastnameError
-                      //     ? { border: "1px solid #EF5050" }
-                      //     : lastname.length && !lastnameError
-                      //     ? { border: "1px solid #98E37E" }
-                      //     : { border: "1px solid #bcbcbc" }
-                      // }
+    
                     />
-                    {/* {lastname.length && lastnameError ? (
-                    <div className="icon_container">
-                      <img src={Vector} alt="" />
-                    </div>
-                  ) : lastname.length && !lastnameError ? (
-                    <div
-                      className="icon_container"
-                      style={{ backgroundColor: "#98e37e" }}
-                    >
-                      <BsCheck />
-                    </div>
-                  ) : null} */}
+
                   </div>
                 </div>
               </div>
@@ -211,11 +180,7 @@ const NewEducation = () => {
                     exp.educationDescription?.length
                       ? { border: "1px solid #98E37E" }
                       : null
-                    // about.length && aboutError
-                    //   ? { border: "1px solid #EF5050" }
-                    //   : about.length && !aboutError
-                    //   ? { border: "1px solid #98E37E" }
-                    //   : { border: "1px solid #bcbcbc" }
+         
                   }
                   name="about"
                   placeholder="განათლების აღწერა"

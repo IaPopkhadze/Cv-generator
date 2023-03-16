@@ -28,6 +28,7 @@ const PersonalInformation = ({ handleNextPage }) => {
 
     _personalInformations.firstname = firstname;
     _personalInformations.firstnameError = !firstname.match(regex);
+
     setPersonalInformations(_personalInformations);
 
     saveLocalData(_personalInformations);
@@ -37,7 +38,7 @@ const PersonalInformation = ({ handleNextPage }) => {
     const _personalInformations = { ...personalInformations };
     const lastname = e.target.value;
     const regex = /^[ა-ჰ]{2,}$/;
-
+    console.log(_personalInformations.lastnameError, "vot eta");
     _personalInformations.lastname = lastname;
     _personalInformations.lastnameError = !lastname.match(regex);
     setPersonalInformations(_personalInformations);
@@ -109,6 +110,7 @@ const PersonalInformation = ({ handleNextPage }) => {
       _personalInformations.imageError = true;
     }
     setPersonalInformations(_personalInformations);
+    saveLocalData(_personalInformations);
   };
 
   return (
